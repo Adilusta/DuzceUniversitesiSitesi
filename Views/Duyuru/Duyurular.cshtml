@@ -1,0 +1,168 @@
+﻿@model IQueryable<Duyuru>
+
+@{
+    ViewData["Title"] = "Duyurular";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+
+</head>
+
+<body>
+	
+	<!-- ================ start banner Area ================= -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-12 banner-right" >
+					<h1 class="text-white text-monospace">
+						DÜDuyurular
+					</h1>
+					<div class="link-nav pb-40 pt-40" style="margin-right: 3rem;">
+						<span class="box">
+							<a href="index.html">Ana Sayfa</a>
+							<i class="lnr lnr-arrow-right"></i>
+							<a href="/Duyuru/Duyurular">DÜDuyurular</a>
+						</span>
+					</div>
+					<a href="/Yonetici/Duyurular/">
+						<button class="click-btn btn mx-5" style="color: blueviolet;">Duyuruları Düzenle</button>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ================ End banner Area ================= -->
+
+	<!-- Start top-category-widget Area -->
+	<section class="top-category-widget-area pt-90 pb-90 ">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="#" target="_blank">
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" src="/WebVize/img/blog/cat-widget1.jpg" alt="">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase">GELİŞMELER</h4>
+									<span></span>
+									
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="#" target="_blank">
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" src="/WebVize/img/blog/cat-widget2.jpg" alt="">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase">SINAVLAR</h4>
+									<span></span>
+									
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="#" target="_blank">
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" src="/WebVize/img/blog/cat-widget3.jpg" alt="">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase">YEMEKHANE</h4>
+									<span></span>
+									
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End top-category-widget Area -->
+
+	<!-- Start post-content Area -->
+	<section class="post-content-area">
+		<div class="container">			   		   
+			<div class="row">
+				
+				<div class="col-lg-8 posts-list">
+					@foreach (var item in Model)
+				    {
+					
+					<div class="single-post row">
+						<div class="col-lg-3  col-md-3 meta-details">
+						
+							<div class="user-details row">
+								 
+								<p class="date col-lg-12 col-md-12 col-6"><a href="#">@(((DateTime)item.DuyuruTarihi).ToString("dd-MMM-yyyy"))</a> <span class="lnr lnr-calendar-full"></span></p>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9">
+								<a class="posts-title" href="/Duyuru/DuyuruDetayi/@item.DuyuruID">
+								<h3>@item.DuyuruBasligi</h3>
+							</a>
+							<p class="excert">
+									@item.DuyuruAciklamasi.Substring(0,item.DuyuruAciklamasi.Substring(0,20).LastIndexOf(" "))...
+									
+								
+								
+							</p>
+							<a href="/Duyuru/DuyuruDetayi/@item.DuyuruID" class="view-more-btn">Devamını Gör </a>
+						</div>
+					</div>
+						}
+					@*<nav class="blog-pagination justify-content-center d-flex">
+						
+						<ul class="pagination">
+							<li class="page-item">
+								<a href="#" class="page-link" aria-label="Previous">
+									<span aria-hidden="true">
+										<span class="lnr lnr-chevron-left"></span>
+									</span>
+								</a>
+							</li>
+							<li class="page-item"><a href="#" class="page-link">01</a></li>
+							<li class="page-item active"><a href="#" class="page-link">02</a></li>
+							<li class="page-item"><a href="#" class="page-link">03</a></li>
+							<li class="page-item"><a href="#" class="page-link">04</a></li>
+							<li class="page-item"><a href="#" class="page-link">09</a></li>
+							<li class="page-item">
+								<a href="#" class="page-link" aria-label="Next">
+									<span aria-hidden="true">
+										<span class="lnr lnr-chevron-right"></span>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</nav>*@
+				</div>
+				
+					
+				@await Component.InvokeAsync("SonDuyurular")
+			</div>
+			
+		</div>
+	</section>
+	<!-- End post-content Area -->
+
+</body>
+
+</html>

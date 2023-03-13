@@ -1,0 +1,80 @@
+﻿@using Web_Vize_Proje.Models
+@model Duyuru
+
+
+@{
+	ViewData["Title"] = Model.DuyuruBasligi;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+
+
+<body>
+
+
+<section class="banner-area">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-12 banner-right">
+				@*<h1 class="text-white">
+						@Model.DuyuruBasligi.Substring(0,Model.DuyuruAciklamasi.Substring(0,30).LastIndexOf(" "))...
+				</h1>*@
+
+					
+					<a href="/Yonetici/DuyuruDuzenle/@Model.DuyuruID">
+						<button class="click-btn btn mt-30" style="color: blueviolet;">Duyuruyu Düzenle</button>
+					</a>
+			</div>
+		</div>
+	</div>
+</section>
+	<section class="post-content-area single-post-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+						@*<div class="col-lg-12">
+							<div class="feature-img">
+								<img class="img-fluid" src="/WebVize/img/blog/feature-img1.jpg" alt="">
+							</div>
+						</div>*@
+						<div class="col-lg-3  col-md-3 meta-details">
+							<div class="user-details row">
+
+								<p class="date col-lg-12 col-md-12 col-6">@(((DateTime)Model.DuyuruTarihi).ToString("dd-MMM-yyyy"))<span class="lnr lnr-calendar-full"></span></p>
+								<ul class="social-links col-lg-12 col-md-12 col-6">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-github"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9">
+							<h3 class="mt-20 mb-20">@Model.DuyuruBasligi</h3>
+							<p class="excert">
+								 @Model.DuyuruAciklamasi
+							</p>
+							
+							
+						</div>
+						
+					</div>
+									
+				</div>
+				
+						
+						
+						
+						
+			</div>
+		</div>
+			
+		
+	</section>
+	
+</body>
+
+</html>

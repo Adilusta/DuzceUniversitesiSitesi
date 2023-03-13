@@ -1,0 +1,11 @@
+﻿
+@model IQueryable<Duyuru>
+
+@foreach (var item in Model)
+{
+	<ul>
+		<li>@item.DuyuruBasligi</li>
+		<p>@item.DuyuruAciklamasi</p>
+	</ul>
+
+}

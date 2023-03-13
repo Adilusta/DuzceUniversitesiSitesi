@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Duyuru
+
+<!DOCTYPE html>
+<html lang="tr">
+
+
+<head>
+    
+    
+</head>
+
+<body>
+
+    <section class="banner-area">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12 banner-right">
+                    <h1 class="text-white text-uppercase ">
+                        Duyuru Düzenleme <br /> Sayfası
+                    </h1>
+                    <a href="/Duyuru/Duyurular/">
+                        <button class="click-btn btn mx-5 my-5" style="color: blueviolet;">Duyurular</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @using (Html.BeginForm("DuyuruDuzenle", "Yonetici", FormMethod.Post))
+    {
+        <table class="table table-bordered table-striped">
+            @Html.HiddenFor(x => x.DuyuruID)
+            @Html.HiddenFor(x => x.DuyuruTarihi)
+            <br />
+            @Html.Label("Duyuru Başlığı")
+            @Html.TextBoxFor(x=> x.DuyuruBasligi, new {@class="form-control"})
+
+            <br />
+            @Html.Label("Duyuru İçeriği")
+            @Html.TextAreaFor(x=>x.DuyuruAciklamasi,10,3, new{@class="form-control"})
+            <br />
+        </table>
+        <button class="btn btn-success"> Güncelle </button>
+
+    }
+    
+</body>
+</html>

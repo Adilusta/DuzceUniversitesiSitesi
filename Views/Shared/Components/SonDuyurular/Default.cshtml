@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Duyuru>
+
+
+<div class="col-lg-4 sidebar-widgets"  style="margin-top: 20px;">
+	<div class="widget-wrap">
+		@*<div class="single-sidebar-widget search-widget">
+			<form class="search-form" action="#">
+				<input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Arama Yapın'">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>*@
+		
+			<div class="single-sidebar-widget popular-post-widget">
+				<h4 class="popular-title">SON DUYURULAR</h4>
+			@foreach (var item in Model)
+			{
+				<div class="popular-post-list">
+					<div class="single-post-list d-flex flex-row align-items-center">
+						@*<div class="thumb">
+							<img class="img-fluid" src="/WebVize/img/blog/pp1.jpg" alt="">
+						</div>*@
+						<div class="details">
+							<a href="genisDuyuru.html">
+								<h6>@item.DuyuruBasligi</h6>
+							</a>
+							<p>@(((DateTime)item.DuyuruTarihi).ToString("dd-MMM-yyyy"))</p>
+							
+						</div>
+					</div>
+					
+
+				</div>
+			}
+			</div>
+
+	</div>
+</div>

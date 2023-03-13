@@ -1,0 +1,74 @@
+﻿@{
+	ViewData["Title"] = "Duyurular";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IQueryable<Duyuru>
+
+<!doctype html>
+<html lang="tr">
+<body>
+
+
+
+<section class="banner-area">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-12 banner-right">
+				<h1 class="text-white">
+					Duyuru
+				</h1>
+				<p class="mx-auto text-white  mt-20 mb-40">
+					In the history of modern astronomy, there is probably no one greater leap forward than the building.
+				</p>
+				<div class="link-nav">
+					<span class="box">
+						<a href="index.html">Home </a>
+						<i class="lnr lnr-arrow-right"></i>
+						<a href="duyurular.html">Blog Home</a>
+						<i class="lnr lnr-arrow-right"></i>
+						<a href="genisDuyuru.html">Single Blog</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<table class="table table-bordered">
+	<tr>
+       @* <th>#</th>*@
+        <th>Duyuru Başlığı</th>
+        <th>Duyuru Tarihi</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+	</tr>
+	
+
+@foreach (var item in Model)
+   {
+       <tr>
+           @*<th>@item.DuyuruID</th>*@
+           <td>@item.DuyuruBasligi</td>
+           <td>@(((DateTime)item.DuyuruTarihi).ToString("dd-MMM-yyyy"))</td>
+
+             
+           <td> 
+                       <a href="/Yonetici/DuyuruSil/@item.DuyuruID"class="btn btn-danger"
+                   onclick="return confirm('Silmek istediğine emin misin?');" >  Sil </a>     
+           
+                 
+           </td>
+                
+           <td>
+                <a href="/Yonetici/DuyuruDuzenle/@item.DuyuruID" class="btn btn-warning"> Düzenle </a>
+            </td>
+
+             
+       </tr>
+   }
+</table>
+
+<a href="/Yonetici/DuyuruEkle/" class="btn btn-primary"> Yeni Blog Oluştur </a>
+</body>
+</html>
